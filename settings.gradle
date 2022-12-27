@@ -12,5 +12,12 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
+
 rootProject.name = "afina"
+
 include ':app'
+include ':auth-api'
+include ':auth-impl'
+include ':core'
+include ':dashboard-api'
+include ':dashboard-impl'

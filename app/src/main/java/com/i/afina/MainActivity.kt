@@ -10,8 +10,14 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.i.afina.auth.AuthScreen
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.rememberNavController
 import com.i.afina.ui.theme.AfinaTheme
+import com.i.auth.IAuthIFeatureRegister
+import com.i.core.feature.register
+import com.i.dashboard_api.IDashboardFeatureRegister
+import org.koin.androidx.compose.get
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,10 +29,36 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    AuthScreen()
+                    MyAppNavHost()
                 }
             }
         }
+    }
+}
+
+@Composable
+fun MyAppNavHost(
+    modifier: Modifier = Modifier,
+    navController: NavHostController = rememberNavController(),
+    startDestination: String = "auth",
+    authFeatureRegister: IAuthIFeatureRegister = get(),
+    dashboardFeatureRegister: IDashboardFeatureRegister = get()
+) {
+    NavHost(
+        modifier = modifier,
+        navController = navController,
+        startDestination = startDestination
+    ) {
+        register(
+            authFeatureRegister,
+            navController,
+            modifier
+        )
+        register(
+            dashboardFeatureRegister,
+            navController,
+            modifier
+        )
     }
 }
 
@@ -41,7 +73,5 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
-    AfinaTheme {
-        AuthScreen()
-    }
+    AfinaTheme {}
 }

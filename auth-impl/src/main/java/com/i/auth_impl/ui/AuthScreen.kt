@@ -1,7 +1,8 @@
-package com.i.afina.auth
+package com.i.auth_impl.ui
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
@@ -18,18 +19,21 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun AuthScreen() {
+internal fun AuthScreen(
+    onNavigateDashboard: () -> Unit
+) {
     Column(
+        modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.SpaceBetween
     ) {
         AuthHeader()
         LoginView()
-        AuthFooter()
+        AuthFooter(onNavigateDashboard)
     }
 }
 
 @Composable
-fun AuthHeader() {
+internal fun AuthHeader() {
     Text(
         text = "Авторизуйся",
         modifier = Modifier
@@ -41,9 +45,10 @@ fun AuthHeader() {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun LoginView() {
+internal fun LoginView() {
     Column(
-        modifier = Modifier.fillMaxWidth()
+        modifier = Modifier
+            .fillMaxWidth()
             .padding(16.dp),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
@@ -62,12 +67,14 @@ fun LoginView() {
 }
 
 @Composable
-fun AuthFooter() {
+internal fun AuthFooter(
+    onAuthButtonClick: () -> Unit
+) {
     Button(
         modifier = Modifier
             .padding(16.dp)
             .fillMaxWidth(),
-        onClick = {}
+        onClick = onAuthButtonClick
     ) {
         Text(text = "Авторизоваться")
     }
@@ -78,8 +85,8 @@ fun AuthFooter() {
     showSystemUi = true
 )
 @Composable
-fun AuthScreenPreview() {
+internal fun AuthScreenPreview() {
     MaterialTheme {
-        AuthScreen()
+        AuthScreen {}
     }
 }
