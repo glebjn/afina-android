@@ -48,11 +48,11 @@ android {
 
 dependencies {
     implementation(
-            project(":core"),
-            project(":auth-api"),
-            project(":auth-impl"),
-            project(":dashboard-api"),
-            project(":dashboard-impl")
+            project(":common:core"),
+            project(":feature:auth:auth-api"),
+            project(":feature:auth:auth-impl"),
+            project(":feature:dashboard:dashboard-api"),
+            project(":feature:dashboard:dashboard-impl")
     )
 
     implementation 'androidx.core:core-ktx:1.8.0'

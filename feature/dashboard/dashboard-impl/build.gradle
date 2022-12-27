@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace 'com.i.auth_impl'
+    namespace 'com.i.dashboard_impl'
     compileSdk 33
 
     defaultConfig {
@@ -38,9 +38,10 @@ android {
 
 dependencies {
     implementation(
-            project(":core"),
-            project(":auth-api")
+            project(":common:core"),
+            project(":feature:dashboard:dashboard-api")
     )
+
     implementation platform('androidx.compose:compose-bom:2022.10.00')
     implementation 'androidx.compose.ui:ui'
     implementation 'androidx.compose.ui:ui-graphics'
@@ -49,6 +50,10 @@ dependencies {
 
     def nav_version = "2.5.3"
     implementation "androidx.navigation:navigation-compose:$nav_version"
+
+    def lifecycle_version = "2.5.1"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycle_version"
 
     def koin_version= "3.3.0"
     def koin_android_version= "3.3.1"
