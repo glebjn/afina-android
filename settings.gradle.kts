@@ -18,6 +18,7 @@ rootProject.name = "afina"
 include(":app")
 includeModulesFrom("common")
 includeModulesFrom("feature")
+includeBuild("gradlePlugins")
 
 /**
  * Функция, которая заменяет ручную "регистрацию" модуля.
