@@ -3,6 +3,7 @@ object Deps {
     val android = Android
     val di = Di
     val testing = Testing
+
     object Android {
         val androidX = AndroidX
 
