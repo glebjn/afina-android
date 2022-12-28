@@ -30,6 +30,9 @@ dependencies {
     implementation(Deps.di.koin.android)
     implementation(Deps.di.koin.compose)
 
+    implementation(Deps.kotlin.serialization)
+    implementation(Deps.network.retrofit.core)
+
     testImplementation(Deps.testing.junit)
     androidTestImplementation(Deps.android.androidX.test.ext)
 }

@@ -1,6 +1,7 @@
-package com.i.auth_impl.business
+package com.i.auth_impl.domain.usecase
 
 import com.i.auth.ILoginUseCase
+import com.i.auth_impl.data.repository.IAuthRepository
 
 internal class LoginUseCase(
     private val authRepository: IAuthRepository
