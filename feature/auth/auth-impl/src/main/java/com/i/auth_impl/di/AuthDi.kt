@@ -21,7 +21,7 @@ val authDi = module {
 
 internal fun Module.ui() {
     factory<IAuthIFeatureRegister> { AuthIFeatureRegister() }
-    viewModel { AuthViewModel() }
+    viewModel { AuthViewModel(get()) }
 }
 
 internal fun Module.domain() {

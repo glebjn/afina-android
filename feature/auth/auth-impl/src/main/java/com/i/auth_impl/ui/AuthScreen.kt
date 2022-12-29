@@ -11,24 +11,42 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import org.koin.androidx.compose.get
 
 @Composable
 internal fun AuthScreen(
+    authViewModel: AuthViewModel = get(),
     onNavigateDashboard: () -> Unit
 ) {
+    val state: State by authViewModel.state.collectAsState()
+
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.SpaceBetween
     ) {
         AuthHeader()
-        LoginView()
-        AuthFooter(onNavigateDashboard)
+        LoginView(
+            login = state.login,
+            password = state.password,
+            onLoginChanged = {
+                authViewModel.dispatch(Events.LoginTextChanged(it))
+            },
+            onPasswordChanged = {
+                authViewModel.dispatch(Events.PasswordTextChanged(it))
+            }
+        )
+        AuthFooter {
+            onNavigateDashboard()
+            //authViewModel.dispatch(Events.LoginButtonClicked)
+        }
     }
 }
 
@@ -45,7 +63,12 @@ internal fun AuthHeader() {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-internal fun LoginView() {
+internal fun LoginView(
+    login: String,
+    password: String,
+    onLoginChanged: (String) -> Unit,
+    onPasswordChanged: (String) -> Unit
+) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -54,13 +77,13 @@ internal fun LoginView() {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         TextField(
-            value = "",
-            onValueChange = {},
+            value = login,
+            onValueChange = { onLoginChanged(it) },
             modifier = Modifier.fillMaxWidth()
         )
         TextField(
-            value = "",
-            onValueChange = {},
+            value = password,
+            onValueChange = { onPasswordChanged(it) },
             modifier = Modifier.fillMaxWidth()
         )
     }
