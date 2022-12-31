@@ -41,6 +41,6 @@ fun includeModulesFrom(sourcesDirName: String) {
  * Функция, определяющая, является ли директория модулем в контексте gradle
  */
 fun isModule(dir: File): Boolean {
-    // Просто проверяем наличие build.gradle файла в директории
-    return File(dir, "build.gradle").exists() || File(dir, "build.gradle.kts").exists()
+    // Просто проверяем наличие build.gradle.kts файла в директории
+    return File(dir, "build.gradle.kts").exists() || File(dir, "build.gradle.kts.kts").exists()
 }

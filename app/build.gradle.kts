@@ -3,6 +3,7 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("android-app-config")
     id("deps")
+    id("org.jetbrains.dokka")
 }
 
 android {
