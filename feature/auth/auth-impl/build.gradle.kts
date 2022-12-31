@@ -19,6 +19,7 @@ dependencies {
     implementation(project(":common:core"))
     implementation(project(":feature:auth:auth-api"))
 
+    implementation("androidx.appcompat:appcompat:1.5.1")
     implementation(platform(Deps.android.androidX.compose.composeBom))
     implementation(Deps.android.androidX.compose.ui)
     implementation(Deps.android.androidX.compose.uiGraphics)

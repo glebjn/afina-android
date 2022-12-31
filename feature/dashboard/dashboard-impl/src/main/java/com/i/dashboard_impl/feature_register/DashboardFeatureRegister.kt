@@ -5,7 +5,8 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import com.i.dashboard_api.IDashboardFeatureRegister
-import com.i.dashboard_impl.DashboardScreen
+import com.i.dashboard_impl.ui.DashboardRoute
+import com.i.dashboard_impl.ui.DashboardScreen
 
 internal class DashboardFeatureRegister : IDashboardFeatureRegister {
 
@@ -21,7 +22,7 @@ internal class DashboardFeatureRegister : IDashboardFeatureRegister {
         modifier: Modifier
     ) {
         navGraphBuilder.composable(baseRoute) {
-            DashboardScreen()
+            DashboardRoute()
         }
     }
 }

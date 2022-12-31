@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="onboarding_dashboard_title">Чем ты интересуешься?</string>
+    <string name="onboarding_dashboard_subtitle">Обновление курсов будут появлятся здесь. Выбери курс который чтобы начать.</string>
+</resources>
